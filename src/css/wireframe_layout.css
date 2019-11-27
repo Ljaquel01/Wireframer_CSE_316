@@ -1,0 +1,61 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+body {
+  position: absolute;
+  width: 82%;
+  left: 9%;
+  top: 5%;
+}
+
+div.banner {
+  padding: 0 .75rem;
+  margin-top: 20px;
+}
+
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form button, form h5 {
+  margin: 20px 0;
+}
+
+#wireframe-link {
+  height: 75px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#wireframe-link-content {
+  padding-top: 5px;
+}
+
+#banner-login {
+  margin-top: 60px;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #00e676;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #00e676 !important;
+}

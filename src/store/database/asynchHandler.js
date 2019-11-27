@@ -33,3 +33,14 @@ export const registerHandler = (newUser, firebase) => (dispatch, getState, { get
         dispatch(actionCreators.registerError);
     });
 };
+
+export const createWireframeHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  firestore.collection('wireframes').add({
+    ...wireframe
+  }).then((wireframe) => {
+    dispatch(actionCreators.createWireframe(wireframe));
+  }).catch((err) => {
+    dispatch(actionCreators.createWireframeError(err));
+  })
+};
