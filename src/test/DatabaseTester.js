@@ -40,6 +40,7 @@ class DatabaseTester extends React.Component {
         if(!this.props.auth.uid || (profile.isLoaded && !profile.administrator)) {
             return <Redirect to="/"/>
         }
+        if(!profile.isLoaded) { return ( <div> <h5>Loading...</h5> </div> ) }
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>

@@ -31,6 +31,21 @@ form button, form h5 {
   margin: 20px 0;
 }
 
+#wireframe {
+  width: 600px;
+  height: 400px;
+  background-color: #FFFFFF;
+  border-color: #000000;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  left: 0px;
+  color: #000000;
+  top: 0px;
+  z-index: -10;
+  margin: 10px;
+}
+
 #wireframe-link {
   height: 75px;
   margin-left: 3px;

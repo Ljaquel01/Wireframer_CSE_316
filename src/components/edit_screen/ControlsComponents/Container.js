@@ -16,7 +16,7 @@ class Container extends React.Component {
                 borderWidth: "1px",
                 fontSize: "15px",
                 left: '0px',
-                fontColor: '#000000',
+                color: '#000000',
                 top: '0px',
                 zIndex: "-1"
             }

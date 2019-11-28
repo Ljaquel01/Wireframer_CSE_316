@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler, updateTimeHandler } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler, addControlHandler } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
@@ -34,6 +34,31 @@ class EditScreen extends Component {
     }
     addControl = (e) => {
         e.preventDefault()
+        switch("") {
+            case "container":
+                var control = {
+                    type: "container",
+                    text: "",
+                    style: {
+                        width: '150px',
+                        height: '80px',
+                        backgroundColor: 'white',
+                        borderColor: "#000000",
+                        borderRadius: "5px",
+                        borderStyle: 'solid',
+                        borderWidth: "1px",
+                        fontSize: "15px",
+                        left: '0px',
+                        color: '#000000',
+                        top: '0px',
+                        zIndex: "-1"
+                    }
+                }
+                this.props.addControl(this.props.wireframe, control)
+                return
+            default:
+                return
+        }
     }
 
     render() {
@@ -77,7 +102,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     saveWork: (wireframe) => dispatch(saveWorkHandler(wireframe)),
-    updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe))
+    updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe)),
+    addControl: (wireframe, control) => dispatch(addControlHandler(wireframe, control))
 });
 
 export default compose(

@@ -47,3 +47,6 @@ export function createWireframeError(error) {
 export function updateTime(wireframe) {
     return { type: UPDATE_TIME, wireframe}
 }
+export function addControl(control) {
+    return { type: "ADD_CONTROL", control}
+}

@@ -16,7 +16,7 @@ class Label extends React.Component {
                 borderWidth: "0px",
                 fontSize: "12px",
                 left: '0px',
-                fontColor: '#000000',
+                color: '#000000',
                 top: '0px',
             }
         }
