@@ -7,7 +7,6 @@ const wireframeReducer = (state = initState, action) => {
         /* IF YOU HAVE ANY WIREFRAME EDITING REDUCERS ADD THEM HERE */ 
         default:
             return state;
-            break;
     }
 };
 

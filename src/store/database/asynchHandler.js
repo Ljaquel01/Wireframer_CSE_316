@@ -44,3 +44,7 @@ export const createWireframeHandler = (wireframe) => (dispatch, getState, { getF
     dispatch(actionCreators.createWireframeError(err));
   })
 };
+
+export const saveWorkHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+};

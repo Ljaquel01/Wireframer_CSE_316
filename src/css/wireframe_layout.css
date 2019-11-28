@@ -7,7 +7,7 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100%;
+  min-height: 90%;
 }
 
 body {
@@ -43,6 +43,14 @@ form button, form h5 {
 
 #banner-login {
   margin-top: 60px;
+}
+
+#edit_screen {
+  bottom: 1px;
+}
+
+.containerControl {
+  text-align: center
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),

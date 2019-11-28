@@ -3,185 +3,207 @@
         {
             "key": 0,
             "name": "Social App",
-            "user": "LJ",
+            "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
             "controls": [
                 {
                     "key": 0,
                     "type": "label",
-                    "position": "absolute",
-                    "left": "25px",
-                    "top": "5px",
-                    "width": "60px",
-                    "height": "15px",
                     "text": "Below there is a button",
-                    "fontSize": "10px",
-                    "textColor": "#000000",
-                    "background": "",
-                    "borderColor": "#000000",
-                    "borderThickness": "2px",
-                    "borderRadius": "4px"
+                    "style": {
+                        "left": "25px",
+                        "top": "5px",
+                        "width": "60px",
+                        "height": "15px",
+                        "fontSize": "10px",
+                        "fontColor": "#000000",
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#000000",
+                        "borderWidth": "1px",
+                        "borderRadius": "5px",
+                        "borderStyle": "solid",
+                        "zIndex": "-1"
+                    }
                 },
                 {
                     "key": 1,
                     "type": "button",
-                    "position": "absolute",
-                    "left": "25px",
-                    "top": "30px",
-                    "width": "40px",
-                    "height": "14px",
                     "text": "Submit",
-                    "fontSize": "10px",
-                    "textColor": "#404040",
-                    "background": "#ffb399",
-                    "borderColor": "#404040",
-                    "borderThickness": "1px",
-                    "borderRadius": "3px"
+                    "style": {
+                        "left": "25px",
+                        "top": "30px",
+                        "width": "40px",
+                        "height": "14px",
+                        "fontSize": "10px",
+                        "fontColor": "#404040",
+                        "backgroundColor": "#ffb399",
+                        "borderColor": "#404040",
+                        "borderWidth": "1px",
+                        "borderRadius": "3px",
+                        "borderStyle": "solid"
+                    }
                 }
             ]
         },
         {
             "key": 1,
             "name": "Form App",
-            "user": "JL",
+            "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
             "controls": [
                 {
                     "key": 0,
                     "type": "container",
                     "position": "absolute",
-                    "z-index": "-1",
-                    "left": "0",
-                    "top": "0",
-                    "width": "120px",
-                    "height": "50px",
                     "text": "",
-                    "fontSize": "10px", 
-                    "textColor": "", 
-                    "background": "#a6a6a6", 
-                    "borderColor": "#404040", 
-                    "borderThickness": "", 
-                    "borderRadius": ""
+                    "style": {
+                        "zIndex": "-1",
+                        "left": "0",
+                        "top": "0",
+                        "width": "120px",
+                        "height": "50px",
+                        "fontSize": "20px", 
+                        "fontColor": "", 
+                        "backgroundColor": "#a6a6a6", 
+                        "borderColor": "#404040", 
+                        "borderWidth": "", 
+                        "borderRadius": "",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 1,
                     "type": "button",
-                    "position": "absolute",
-                    "left": "5px",
-                    "top": "60px",
-                    "width": "30px",
-                    "height": "14px",
                     "text": "Display",
-                    "fontSize": "10px",
-                    "textColor": "#404040",
-                    "background": "#ffb399",
-                    "borderColor": "#404040",
-                    "borderThickness": "1px",
-                    "borderRadius": "3px"
+                    "style": {
+                        "left": "5px",
+                        "top": "60px",
+                        "width": "30px",
+                        "height": "14px",
+                        "fontSize": "10px",
+                        "fontColor": "#404040",
+                        "backgroundColor": "#ffb399",
+                        "borderColor": "#404040",
+                        "borderWidth": "1px",
+                        "borderRadius": "3px",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 2,
                     "type": "label",
-                    "position": "absolute",
-                    "left": "5px",
-                    "top": "5px",
-                    "width": "30px",
-                    "height": "20px",
                     "text": "Field: ",
-                    "fontSize": "10px",
-                    "textColor": "#000000",
-                    "background": "",
-                    "borderColor": "",
-                    "borderThickness": "",
-                    "borderRadius": ""
+                    "style": {
+                        "left": "5px",
+                        "top": "5px",
+                        "width": "30px",
+                        "height": "20px",
+                        "fontSize": "10px",
+                        "fontColor": "#000000",
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#000000",
+                        "borderWidth": "1px",
+                        "borderRadius": "6px",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 3,
                     "type": "textfield",
-                    "position": "absolute",
-                    "left": "40px",
-                    "top": "5px",
-                    "width": "60px",
-                    "height": "20px",
-                    "value": "",
-                    "fontSize": "10px",
-                    "textColor": "#000000",
-                    "background": "",
-                    "borderColor": "#000000",
-                    "borderThickness": "",
-                    "borderRadius": "4px"
+                    "value": "Input",
+                    "style": {
+                        "left": "40px",
+                        "top": "5px",
+                        "width": "60px",
+                        "height": "20px",
+                        "fontSize": "10px",
+                        "fontColor": "#000000",
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#000000",
+                        "borderWidth": "1px",
+                        "borderRadius": "6px",
+                        "borderStyle": "solid"
+                    }
                 }
             ]
         },
         {
             "key": 2,
             "name": "Library Layout",
-            "user": "LM",
+            "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
             "controls": [
                 {
                     "key": 0,
                     "type": "label",
-                    "position": "absolute",
-                    "left": "0",
-                    "top": "0",
-                    "width": "30px",
-                    "height": "20px",
                     "text": "Field one: ",
-                    "fontSize": "10px", 
-                    "textColor": "", 
-                    "background": "", 
-                    "borderColor": "", 
-                    "borderThickness": "", 
-                    "borderRadius": ""
+                    "style": {
+                        "left": "0",
+                        "top": "0",
+                        "width": "30px",
+                        "height": "20px",
+                        "fontSize": "15px", 
+                        "fontColor": "#000000", 
+                        "backgroundColor": "#FFFFFF", 
+                        "borderColor": "#000000", 
+                        "borderWidth": "1px", 
+                        "borderRadius": "6px",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 1,
                     "type": "textfield",
-                    "position": "absolute",
-                    "left": "35px",
-                    "top": "0px",
-                    "width": "90px",
-                    "height": "20px",
                     "value": "",
-                    "fontSize": "10px",
-                    "textColor": "#404040",
-                    "background": "",
-                    "borderColor": "#404040",
-                    "borderThickness": "1px",
-                    "borderRadius": "3px"
+                    "style": {
+                        "left": "35px",
+                        "top": "0px",
+                        "width": "90px",
+                        "height": "20px",
+                        "fontSize": "10px",
+                        "fontColor": "#404040",
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#404040",
+                        "borderWidth": "1px",
+                        "borderRadius": "3px",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 2,
                     "type": "label",
-                    "position": "absolute",
-                    "left": "0",
-                    "top": "35",
-                    "width": "30px",
-                    "height": "20px",
                     "text": "Field two: ",
-                    "fontSize": "10px", 
-                    "textColor": "", 
-                    "background": "", 
-                    "borderColor": "", 
-                    "borderThickness": "", 
-                    "borderRadius": ""
+                    "style": {
+                        "left": "0px",
+                        "top": "35px",
+                        "width": "30px",
+                        "height": "20px",
+                        "fontSize": "10px", 
+                        "fontColor": "#000000", 
+                        "backgroundColor": "#FFFFFF", 
+                        "borderColor": "#000000", 
+                        "borderWidth": "1px", 
+                        "borderRadius": "6px",
+                        "borderStyle": "solid"
+                    }
                 },
                 {
                     "key": 3,
                     "type": "textfield",
-                    "position": "absolute",
-                    "left": "35px",
-                    "top": "35px",
-                    "width": "90px",
-                    "height": "20px",
-                    "value": "",
-                    "fontSize": "10px",
-                    "textColor": "#404040",
-                    "background": "",
-                    "borderColor": "#404040",
-                    "borderThickness": "1px",
-                    "borderRadius": "3px"
+                    "value": "input",
+                    "style": {
+                        "left": "35px",
+                        "top": "35px",
+                        "width": "90px",
+                        "height": "20px",
+                        "fontSize": "10px",
+                        "fontColor": "#404040",
+                        "backgroundColor": "#FFFFFF",
+                        "borderColor": "#404040",
+                        "borderWidth": "1px",
+                        "borderRadius": "3px",
+                        "borderStyle": "solid"
+                    }
                 }
             ]
         }
