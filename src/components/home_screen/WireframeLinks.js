@@ -16,7 +16,8 @@ class WireframeLinks extends React.Component {
             return <Redirect to="/login" />;
         }
 
-        const wireframes = this.props.wireframes ? this.props.wireframes.sort(this.compare) : null
+        var wireframes = this.props.wireframes ? this.props.wireframes.sort(this.compare) : null
+        if(wireframes) { wireframes = wireframes.filter((w) => {return w.user === this.props.auth.uid })}
         return (
             <div className="wireframes section">
                 {wireframes && wireframes.map(wireframe => (

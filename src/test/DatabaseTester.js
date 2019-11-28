@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import wireframerJson from './TestWireframerData.json'
 import { getFirestore } from 'redux-firestore';
+import { Redirect } from 'react-router-dom';
 
 class DatabaseTester extends React.Component {
 
@@ -24,7 +25,7 @@ class DatabaseTester extends React.Component {
             fireStore.collection('wireframes').add({
                     name: wireframerJson.name,
                     user: wireframerJson.user,
-                    lastModified: wireframerJson.lastModified,
+                    lastModified: new Date(),
                     controls: wireframerJson.controls
                 }).then(() => {
                     console.log("DATABASE RESET");
@@ -35,11 +36,16 @@ class DatabaseTester extends React.Component {
     }
 
     render() {
+        const {profile} = this.props.firebase
+        if(!this.props.auth.uid || (profile.isLoaded && !profile.administrator)) {
+            return <Redirect to="/"/>
+        }
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>
                 <button onClick={this.handleReset}>Reset Database</button>
-            </div>)
+            </div>
+        )
     }
 }
 

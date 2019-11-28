@@ -12,8 +12,8 @@ body {
 
 body {
   position: absolute;
-  width: 82%;
-  left: 9%;
+  width: 88%;
+  left: 6%;
   top: 5%;
 }
 
@@ -50,7 +50,12 @@ form button, form h5 {
 }
 
 .containerControl {
-  text-align: center
+  text-align: center;
+  margin: auto;
+}
+
+.containerControl, .labelControl, .buttonControl, .textfieldControl {
+  margin-top: 35px;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),

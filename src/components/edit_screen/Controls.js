@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Container from './ControlsComponents/Container'
+import Label from './ControlsComponents/Label'
+import Button from './ControlsComponents/Button'
+import Textfield from './ControlsComponents/Textfield'
 
 class Controls extends Component {
 
@@ -13,10 +16,23 @@ class Controls extends Component {
                     <h6 className="col s2 offset-s1 btn-flat black-text" onClick={this.props.closeWork}>Close</h6>
                 </div>
                 <div className="row">
-                    <div className="col s12">
-                        <Container addControl={this.props.addControl}/>
+                    
+                    <div className="col s12"> 
+                        <div> <Container addControl={this.props.addControl}/> </div> 
                     </div>
-                    <div className="col s12"></div>
+                    <div className="col s12 center-align">Container</div>
+                    <div className="col s12"> 
+                        <div className="center-align"> <Label addControl={this.props.addControl}/> </div>
+                    </div>
+                    <div className="col s12 center-align">Label</div>
+                    <div className="col s12"> 
+                        <div className="center-align"> <Button addControl={this.props.addControl}/> </div>
+                    </div>
+                    <div className="col s12 center-align">Button</div>
+                    <div className="col s12"> 
+                        <div className="center-align"> <Textfield addControl={this.props.addControl}/> </div>
+                    </div>
+                    <div className="col s12 center-align">Textfield</div>
                 </div>
             </div>
         );

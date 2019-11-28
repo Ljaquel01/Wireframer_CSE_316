@@ -10,7 +10,7 @@ class HomeScreen extends Component {
 
     handleNewWireframe = (e) => {
         e.preventDefault();
-        const newWireframe = {name: "Unknown", user: "", controls:[], lastModified: new Date()}
+        const newWireframe = {name: "Unknown", user: this.props.auth.uid, controls:[], lastModified: new Date()}
         this.props.createWireframe(newWireframe)
     }
 

@@ -48,3 +48,11 @@ export const createWireframeHandler = (wireframe) => (dispatch, getState, { getF
 export const saveWorkHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
   const firestore = getFirestore();
 };
+
+export const updateTimeHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore()
+  firestore.collection('wireframes').doc(wireframe.id).update({lastModified: new Date()})
+  .then(() => {
+    dispatch(actionCreators.updateTime(wireframe))
+  })
+}

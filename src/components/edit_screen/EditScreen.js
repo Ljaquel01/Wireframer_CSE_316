@@ -3,17 +3,21 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
 
 class EditScreen extends Component {
     state = {
-        name: '',
-        controls: [],
+        name: this.props.wireframe ? this.props.wireframe.name : "",
+        controls: this.props.wireframe ? this.props.wireframe.controls : [],
         selected: '',
-        zoom: ''
+        zoom: 1
+    }
+
+    componentDidMount() {
+        if(this.props.wireframe) { this.props.updateTime(this.props.wireframe) }
     }
 
     saveWork = (e) => {
@@ -29,7 +33,7 @@ class EditScreen extends Component {
 
     }
     addControl = (e) => {
-        
+        e.preventDefault()
     }
 
     render() {
@@ -72,7 +76,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    saveWork: (wireframe) => dispatch(saveWorkHandler(wireframe))
+    saveWork: (wireframe) => dispatch(saveWorkHandler(wireframe)),
+    updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe))
 });
 
 export default compose(
