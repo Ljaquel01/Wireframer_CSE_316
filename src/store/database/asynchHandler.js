@@ -50,7 +50,7 @@ export const createWireframeHandler = (wireframe) => (dispatch, getState, { getF
 };
 
 export const saveWorkHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
-  const firestore = getFirestore();
+  //const firestore = getFirestore();
 };
 
 export const addControlHandler = (wireframe, control) => (dispatch, getState, { getFirestore }) => {

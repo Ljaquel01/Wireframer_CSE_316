@@ -8,6 +8,17 @@ import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
 
+export const NEW_CONTROLS = {
+    CONTAINER: {
+        type: "container", text: "",
+        style: {
+            position: 'relative', width: '150px', height: '80px', backgroundColor: 'white',
+            borderColor: "#000000", borderRadius: "5px", borderStyle: 'solid', borderWidth: "1px",
+            fontSize: "18px", left: '0px', color: '#000000', top: '0px',
+        }
+    }
+  }
+
 class EditScreen extends Component {
     state = {
         name: this.props.wireframe ? this.props.wireframe.name : "",
@@ -32,33 +43,34 @@ class EditScreen extends Component {
     zoom = (e) => {
 
     }
+    selectControl = (key, e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        this.setState({ selected: key})
+    }
+    unselect = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        this.setState({ selected: ''})
+    }
     addControl = (e) => {
         e.preventDefault()
         switch("") {
             case "container":
-                var control = {
-                    type: "container",
-                    text: "",
-                    style: {
-                        width: '150px',
-                        height: '80px',
-                        backgroundColor: 'white',
-                        borderColor: "#000000",
-                        borderRadius: "5px",
-                        borderStyle: 'solid',
-                        borderWidth: "1px",
-                        fontSize: "15px",
-                        left: '0px',
-                        color: '#000000',
-                        top: '0px',
-                        zIndex: "-1"
-                    }
-                }
-                this.props.addControl(this.props.wireframe, control)
-                return
+                this.props.addControl(this.props.wireframe, NEW_CONTROLS.CONTAINER)
+                break
             default:
-                return
+                break
         }
+    }
+    changeControl = (index, e) => {
+        const {name, value } = e.target
+        console.log(value)
+        var temp = this.state.controls
+        var tempStyle = JSON.parse(JSON.stringify(temp[index].style))
+        if(name === 'text') { temp[index].text ? (temp[index].text = value) : (temp[index].value = value) }
+        if(name === 'backgroundColor') { tempStyle.backgroundColor = value; temp[index].style = tempStyle}
+        this.setState({controls: temp})
     }
 
     render() {
@@ -76,8 +88,13 @@ class EditScreen extends Component {
                     zoom={this.zoom}
                     addControl={this.addControl}
                 />
-                <Wireframe wireframe={wireframe}/>
-                <Properties wireframe={wireframe}/>
+                <Wireframe controls={this.state.controls} 
+                    selectControl={this.selectControl}
+                    unselect={this.unselect}/>
+                <Properties wireframe={wireframe} 
+                    controls={this.state.controls} 
+                    selected={this.state.selected}
+                    change={this.changeControl}/>
             </div>
         );
     }

@@ -24,7 +24,8 @@ class Textfield extends React.Component {
         return (
             <div className="textfieldControl">
                 <input type="text"  className="textfield"
-                    onClick={this.props.addControl} disabled= {b} 
+                    onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
+                    disabled= {b} readOnly
                     value={!control ? "Input" : control.value} style={style} name='textfield'>
                 </input>
             </div>
