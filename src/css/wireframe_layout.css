@@ -64,6 +64,17 @@ form button, form h5 {
   bottom: 1px;
 }
 
+#properties {
+  height: 494px
+}
+
+.row .prop {
+  height: 30px;
+}
+
+.divider {
+  margin: 10px;
+}
 .containerControl {
   text-align: center;
   margin: auto;

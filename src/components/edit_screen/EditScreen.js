@@ -65,11 +65,15 @@ class EditScreen extends Component {
     }
     changeControl = (index, e) => {
         const {name, value } = e.target
-        console.log(value)
         var temp = this.state.controls
         var tempStyle = JSON.parse(JSON.stringify(temp[index].style))
         if(name === 'text') { temp[index].text ? (temp[index].text = value) : (temp[index].value = value) }
+        if(name === 'color') { tempStyle.color = value; temp[index].style = tempStyle}
+        if(name === 'fontSize') { tempStyle.fontSize = value + 'px'; temp[index].style = tempStyle}
         if(name === 'backgroundColor') { tempStyle.backgroundColor = value; temp[index].style = tempStyle}
+        if(name === 'borderColor') { tempStyle.borderColor = value; temp[index].style = tempStyle}
+        if(name === 'borderWidth') { tempStyle.borderWidth = value + 'px'; temp[index].style = tempStyle}
+        if(name === 'borderRadius') { tempStyle.borderRadius = value + 'px'; temp[index].style = tempStyle}
         this.setState({controls: temp})
     }
 
