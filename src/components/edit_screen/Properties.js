@@ -52,7 +52,7 @@ class Properties extends React.Component {
                 <div className="row valign-wrapper">
                     <label className="col s4 black-text">Background: </label>
                     <input className="col s4 offset-s4" name="backgroundColor" type="color" 
-                        value={control.style.backgroundColor} 
+                        value={ control.style.backgroundColor ? control.style.backgroundColor : '#FFFFFF' } 
                         onChange={this.props.change.bind(this, index)}>
                     </input>
                 </div>

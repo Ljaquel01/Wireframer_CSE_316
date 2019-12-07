@@ -22,10 +22,11 @@ class WireframeLinks extends React.Component {
             <div className="wireframes section">
                 {wireframes && wireframes.map(wireframe => (
                     <Link to={'/wireframe/' + wireframe.id} key={wireframe.id}>
-                        <div className="card z-depth-1 wireframe-link green lighten-5 hoverable">
-                            <div className="card-content grey-text text-darken-4">
+                        <div className="card z-depth-1 wireframe-link green row lighten-5 hoverable">
+                            <div className="card-content grey-text text-darken-4 col s10">
                                 <span className="card-title">{wireframe.name}</span>
                             </div>
+                            <button className="btn btn-flat col s2" name={wireframe.id} onClick={this.props.deleteWireframe}>X</button>
                         </div>
                     </Link>
                 ))}

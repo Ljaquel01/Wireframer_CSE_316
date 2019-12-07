@@ -10,7 +10,7 @@ class Textfield extends React.Component {
             style = {
                 width: '100px',
                 height: '40px',
-                backgroundColor: '',
+                backgroundColor: '#FFFFFF',
                 borderRadius: "6px",
                 borderStyle: 'solid',
                 borderWidth: "1px",

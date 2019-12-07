@@ -4,14 +4,19 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import WireframeLinks from './WireframeLinks'
-import { createWireframeHandler } from '../../store/database/asynchHandler'
+import { createWireframeHandler, deleteWireframeHandler } from '../../store/database/asynchHandler'
 
 class HomeScreen extends Component {
 
     handleNewWireframe = (e) => {
         e.preventDefault();
-        const newWireframe = {name: "Unknown", user: this.props.auth.uid, controls:[], lastModified: new Date()}
+        const newWireframe = {name: "unknown", user: this.props.auth.uid, controls:[], lastModified: new Date()}
         this.props.createWireframe(newWireframe)
+    }
+    deleteWireframe = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.props.deleteWireframe(e.target.name)
     }
 
     render() {
@@ -23,7 +28,7 @@ class HomeScreen extends Component {
             <div className="dashboard container home_box">
                 <div className="row">
                     <div className="col s12 m4 wireframe_links">
-                        <WireframeLinks />
+                        <WireframeLinks deleteWireframe={this.deleteWireframe} />
                     </div>
 
                     <div className="col s8 banners">
@@ -52,7 +57,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createWireframe: (wireframe) => dispatch(createWireframeHandler(wireframe))    
+        createWireframe: (wireframe) => dispatch(createWireframeHandler(wireframe)),
+        deleteWireframe: (wireframe) => dispatch(deleteWireframeHandler(wireframe))  
     }
 }
 

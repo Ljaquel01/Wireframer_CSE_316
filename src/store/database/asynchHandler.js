@@ -4,6 +4,13 @@ export const idGenerator = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
 
+export const getIndex = (list, key) => {
+  for (let i = 0; i < list.length; i++) { 
+    if (list[i].key.toString() === key.toString()) { return i }
+  }
+  return -1
+};
+
 export const loginHandler = ({ credentials, firebase }) => (dispatch, getState) => {
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
@@ -49,8 +56,13 @@ export const createWireframeHandler = (wireframe) => (dispatch, getState, { getF
   })
 };
 
-export const saveWorkHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
-  //const firestore = getFirestore();
+export const saveWorkHandler = (wireframe, controls, name) => (dispatch, getState, { getFirestore }) => {
+  if(name === '') { name = "unknown"}
+  const firestore = getFirestore();
+  firestore.collection('wireframes').doc(wireframe.id).update({controls: controls, name: name})
+  .then(() => {
+    dispatch(actionCreators.saveWork(controls))
+  })
 };
 
 export const addControlHandler = (wireframe, control) => (dispatch, getState, { getFirestore }) => {
@@ -73,3 +85,19 @@ export const updateTimeHandler = (wireframe) => (dispatch, getState, { getFirest
     dispatch(actionCreators.updateTime(wireframe))
   })
 }
+
+export const deleteWireframeHandler = (id) => (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore()
+  firestore.collection('wireframes').doc(id).delete()
+  .then(() => {
+    dispatch(actionCreators.deleteWireframe(id))
+  })
+}
+
+export const nameChangeHandler = (wireframe, name) => (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  firestore.collection('wireframes').doc(wireframe.id).update({ name: name })
+    .then(() => {
+      dispatch(actionCreators.nameChange(name))
+    })
+};

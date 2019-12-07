@@ -72,6 +72,10 @@ form button, form h5 {
   height: 30px;
 }
 
+.textfield {
+  padding-left: 5px !important;
+}
+
 .divider {
   margin: 10px;
 }

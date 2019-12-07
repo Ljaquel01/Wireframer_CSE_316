@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler, updateTimeHandler, addControlHandler } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler, addControlHandler, nameChangeHandler } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
@@ -21,7 +21,7 @@ export const NEW_CONTROLS = {
 
 class EditScreen extends Component {
     state = {
-        name: this.props.wireframe ? this.props.wireframe.name : "",
+        name: this.props.wireframe ? this.props.wireframe.name : "unknown",
         controls: this.props.wireframe ? this.props.wireframe.controls : [],
         selected: '',
         zoom: 1
@@ -33,12 +33,18 @@ class EditScreen extends Component {
 
     saveWork = (e) => {
         e.stopPropagation()
-        //this.props.saveWork(???????)
-        this.props.history.push('/')
+        if(this.state.name === "") {
+            this.setState({name: "unknown"})
+        }
+        this.props.saveWork(this.props.wireframe, this.state.controls, this.state.name)
     }
     closeWork = (e) => {
         e.stopPropagation()
         this.props.history.push('/')
+    }
+    nameChange = (e) => {
+        var name = e.target.value
+        this.setState({name: name})
     }
     zoom = (e) => {
 
@@ -64,7 +70,9 @@ class EditScreen extends Component {
         }
     }
     changeControl = (index, e) => {
-        const {name, value } = e.target
+        const { name } = e.target
+        var value = e.target.value
+        if(value === '') { value = " "}
         var temp = this.state.controls
         var tempStyle = JSON.parse(JSON.stringify(temp[index].style))
         if(name === 'text') { temp[index].text ? (temp[index].text = value) : (temp[index].value = value) }
@@ -94,7 +102,9 @@ class EditScreen extends Component {
                 />
                 <Wireframe controls={this.state.controls} 
                     selectControl={this.selectControl}
-                    unselect={this.unselect}/>
+                    unselect={this.unselect}
+                    nameChange={this.nameChange}
+                    name={this.state.name}/>
                 <Properties wireframe={wireframe} 
                     controls={this.state.controls} 
                     selected={this.state.selected}
@@ -122,9 +132,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    saveWork: (wireframe) => dispatch(saveWorkHandler(wireframe)),
+    saveWork: (wireframe, controls, name) => dispatch(saveWorkHandler(wireframe, controls, name)),
     updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe)),
-    addControl: (wireframe, control) => dispatch(addControlHandler(wireframe, control))
+    addControl: (wireframe, control) => dispatch(addControlHandler(wireframe, control)),   
+    nameChange: (wireframe, name) => dispatch(nameChangeHandler(wireframe, name))
 });
 
 export default compose(

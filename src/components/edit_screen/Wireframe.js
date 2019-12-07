@@ -10,7 +10,12 @@ class Wireframe extends React.Component {
         const { controls } = this.props
         return (
             <div className="col s7" onClick={this.props.unselect}>
-                <h6>Wireframe</h6>
+                <div className="row">
+                    <h6 className="col s2">Wireframe</h6>
+                    <label className="col s2 offset-s3">Name:</label>
+                    <input type="text" value={this.props.name} 
+                    className="col s5" onChange={this.props.nameChange}></input>
+                </div>
                 <div id="wireframe">
                     {controls && controls.map(control => (
                         control.type === "container" ? <Container control={control} 

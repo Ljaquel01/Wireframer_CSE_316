@@ -9,7 +9,7 @@ class Label extends React.Component {
             style = {
                 width: '80px',
                 height: '50px',
-                backgroundColor: '',
+                backgroundColor: '#FFFFFF',
                 borderColor: "#000000",
                 borderRadius: "6px",
                 borderStyle: 'solid',

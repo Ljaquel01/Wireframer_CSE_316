@@ -47,6 +47,15 @@ export function createWireframeError(error) {
 export function updateTime(wireframe) {
     return { type: UPDATE_TIME, wireframe}
 }
+export function saveWork(newControls) {
+    return { type: "SAVE_WORK", newControls}
+}
+export function deleteWireframe(wireframe) {
+    return { type: "DELETE_WIREFRAME", wireframe}
+}
+export function nameChange(name) {
+    return { type: "NAME_CHANGE", name}
+}
 export function addControl(control) {
     return { type: "ADD_CONTROL", control}
 }
