@@ -56,6 +56,3 @@ export function deleteWireframe(wireframe) {
 export function nameChange(name) {
     return { type: "NAME_CHANGE", name}
 }
-export function addControl(control) {
-    return { type: "ADD_CONTROL", control}
-}

@@ -21,9 +21,11 @@ class Button extends React.Component {
             }
         }
         return (
-            <button className="buttonControl center-align" onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
-                style={style} name='button'>{!control ? "Submit" : control.text}
-            </button>
+            <div>
+                <button onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
+                    style={style} name='button'>{!control ? "Submit" : control.text}
+                </button>
+            </div>
         );
     }
 }

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler, updateTimeHandler, addControlHandler, nameChangeHandler } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler, nameChangeHandler } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
@@ -24,7 +24,8 @@ class EditScreen extends Component {
         name: this.props.wireframe ? this.props.wireframe.name : "unknown",
         controls: this.props.wireframe ? this.props.wireframe.controls : [],
         selected: '',
-        zoom: 1
+        zoom: 1,
+        changed: false
     }
 
     componentDidMount() {
@@ -36,6 +37,7 @@ class EditScreen extends Component {
         if(this.state.name === "") {
             this.setState({name: "unknown"})
         }
+        this.setState({changed: false})
         this.props.saveWork(this.props.wireframe, this.state.controls, this.state.name)
     }
     closeWork = (e) => {
@@ -44,7 +46,7 @@ class EditScreen extends Component {
     }
     nameChange = (e) => {
         var name = e.target.value
-        this.setState({name: name})
+        this.setState({changed: true, name: name})
     }
     zoom = (e) => {
 
@@ -61,9 +63,11 @@ class EditScreen extends Component {
     }
     addControl = (e) => {
         e.preventDefault()
+        console.log(e.target.className)
         switch("") {
-            case "container":
-                this.props.addControl(this.props.wireframe, NEW_CONTROLS.CONTAINER)
+            case "containerControl":
+                // you should add control to the state instead
+                this.setState({changed: true})
                 break
             default:
                 break
@@ -82,7 +86,7 @@ class EditScreen extends Component {
         if(name === 'borderColor') { tempStyle.borderColor = value; temp[index].style = tempStyle}
         if(name === 'borderWidth') { tempStyle.borderWidth = value + 'px'; temp[index].style = tempStyle}
         if(name === 'borderRadius') { tempStyle.borderRadius = value + 'px'; temp[index].style = tempStyle}
-        this.setState({controls: temp})
+        this.setState({controls: temp, changed: true})
     }
 
     render() {
@@ -99,6 +103,7 @@ class EditScreen extends Component {
                     closeWork={this.closeWork}
                     zoom={this.zoom}
                     addControl={this.addControl}
+                    any={this.state.changed}
                 />
                 <Wireframe controls={this.state.controls} 
                     selectControl={this.selectControl}
@@ -133,8 +138,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     saveWork: (wireframe, controls, name) => dispatch(saveWorkHandler(wireframe, controls, name)),
-    updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe)),
-    addControl: (wireframe, control) => dispatch(addControlHandler(wireframe, control)),   
+    updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe)),  
     nameChange: (wireframe, name) => dispatch(nameChangeHandler(wireframe, name))
 });
 

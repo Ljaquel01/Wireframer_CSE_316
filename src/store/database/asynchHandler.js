@@ -65,19 +65,6 @@ export const saveWorkHandler = (wireframe, controls, name) => (dispatch, getStat
   })
 };
 
-export const addControlHandler = (wireframe, control) => (dispatch, getState, { getFirestore }) => {
-  const controls = wireframe.controls
-  const id = idGenerator()
-  control.id = id
-  control.key = id
-  controls.push(control)
-  const firestore = getFirestore();
-  firestore.collection('wireframes').doc(wireframe.id).update({controls: controls})
-  .then(() => {
-    dispatch(actionCreators.addControl(control))
-  })
-};
-
 export const updateTimeHandler = (wireframe) => (dispatch, getState, { getFirestore }) => {
   const firestore = getFirestore()
   firestore.collection('wireframes').doc(wireframe.id).update({lastModified: new Date()})

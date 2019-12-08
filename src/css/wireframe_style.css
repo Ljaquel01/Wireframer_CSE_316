@@ -63,3 +63,8 @@ div.banner {
 .material-icons{
   font-size: 40px
 }
+
+.controlTools:hover {
+  color: #00e676;
+  cursor: pointer;
+}

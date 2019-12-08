@@ -22,7 +22,7 @@ class Label extends React.Component {
         }
         const t = "Prompt for inputs"
         return (
-            <div className="labelControl">
+            <div>
                 <label className="label" onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
                     style={style} name='label'>
                     {control ? control.text ? control.text : t : t}

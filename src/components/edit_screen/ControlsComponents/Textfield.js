@@ -22,10 +22,10 @@ class Textfield extends React.Component {
             b = true
         }
         return (
-            <div className="textfieldControl">
-                <input type="text"  className="textfield"
+            <div>
+                <input type="text" className="textfield"
                     onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
-                    disabled= {b} readOnly
+                    disabled= {b} readOnly 
                     value={!control ? "Input" : control.value} style={style} name='textfield'>
                 </input>
             </div>
