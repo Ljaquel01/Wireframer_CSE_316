@@ -3,18 +3,45 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler, updateTimeHandler, nameChangeHandler } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler, nameChangeHandler, idGenerator } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
 
 export const NEW_CONTROLS = {
     CONTAINER: {
-        type: "container", text: "",
+        type: "container",
         style: {
-            position: 'relative', width: '150px', height: '80px', backgroundColor: 'white',
+            position: 'absolute', width: '150px', height: '80px', backgroundColor: 'white',
             borderColor: "#000000", borderRadius: "5px", borderStyle: 'solid', borderWidth: "1px",
-            fontSize: "18px", left: '0px', color: '#000000', top: '0px',
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px',
+        }
+    },
+    BUTTON: {
+        type: "button",
+        text: "button",
+        style: {
+            width: '80px', height: '25px', backgroundColor: '#FFFFFF', borderColor: "#000000",
+            borderRadius: "5px", borderStyle: 'solid', borderWidth: "1px", fontSize: "18px",
+            position: 'absolute', left: '2px', color: '#000000', top: '2px'
+        }
+    },
+    TEXTFIELD: {
+        type: "textfield",
+        text: "textfield",
+        style: {
+            position: "abosulte", width: '100px', height: '40px', backgroundColor: '#FFFFFF',
+            borderRadius: "6px", borderStyle: 'solid', borderWidth: "1px",
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px',
+        }
+    },
+    LABEL: {
+        type: "label",
+        text: "label",
+        style: {
+            position: "absolute", width: '80px', height: '50px', backgroundColor: '#FFFFFF', 
+            borderColor: "#000000", borderRadius: "6px", borderStyle: 'solid', borderWidth: "0px", 
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px',
         }
     }
   }
@@ -61,17 +88,27 @@ class EditScreen extends Component {
         e.stopPropagation()
         this.setState({ selected: ''})
     }
-    addControl = (e) => {
+    addControl = (type, e) => {
         e.preventDefault()
-        console.log(e.target.className)
-        switch("") {
-            case "containerControl":
-                // you should add control to the state instead
-                this.setState({changed: true})
+        var controls = this.state.controls
+        var control = NEW_CONTROLS.CONTAINER
+        switch(type) {
+            case "container":
+                control = NEW_CONTROLS.CONTAINER
+                break
+            case "label":
+                control = NEW_CONTROLS.LABEL
+                break
+            case "button":
+                control = NEW_CONTROLS.BUTTON
                 break
             default:
+                control = NEW_CONTROLS.TEXTFIELD
                 break
         }
+        control.key = idGenerator()
+        controls.push(control)
+        this.setState({changed: true, controls: controls})
     }
     changeControl = (index, e) => {
         const { name } = e.target

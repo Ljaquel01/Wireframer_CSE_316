@@ -22,7 +22,7 @@ class Container extends React.Component {
             }
         }
         return (
-            <div name="container"
+            <div name="container" className="center"
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) } 
                 style={style}>
             </div>

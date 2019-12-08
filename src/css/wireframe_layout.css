@@ -47,6 +47,10 @@ form button, form h5 {
   margin: 0px;
 }
 
+#controls {
+  height: 494px;
+}
+
 #wireframe-link {
   height: 75px;
   margin-left: 3px;
@@ -67,6 +71,10 @@ form button, form h5 {
 
 #properties {
   height: 494px
+}
+
+.center {
+  display: inline-block
 }
 
 .row .prop {

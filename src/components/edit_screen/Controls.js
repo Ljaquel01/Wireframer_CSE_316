@@ -18,21 +18,20 @@ class Controls extends Component {
                     <h6 className="col s1 offset-s1 btn-flat controlTools" onClick={this.props.closeWork}>Close</h6>
                 </div>
                 <div className="row">
-                    
-                    <div className="col s12 containerControl"> 
-                        <div> <Container addControl={this.props.addControl}/> </div> 
+                    <div className="col s12"> 
+                        <div name="container" className="center-align"> <Container addControl={this.props.addControl.bind(this, "container")}/> </div> 
                     </div>
                     <div className="col s12 center-align">Container</div>
                     <div className="col s12"> 
-                        <div name="label" className="center-align labelControl"> <Label addControl={this.props.addControl}/> </div>
+                        <div name="label" className="center-align labelControl"> <Label addControl={this.props.addControl.bind(this, "label")}/> </div>
                     </div>
                     <div className="col s12 center-align">Label</div>
                     <div className="col s12"> 
-                        <div className="center-align buttonControl"> <Button addControl={this.props.addControl}/> </div>
+                        <div className="center-align buttonControl"> <Button addControl={this.props.addControl.bind(this, "button")}/> </div>
                     </div>
                     <div className="col s12 center-align">Button</div>
                     <div className="col s12"> 
-                        <div className="center-align textfieldControl"> <Textfield addControl={this.props.addControl}/> </div>
+                        <div className="center-align textfieldControl"> <Textfield addControl={this.props.addControl.bind(this, "textfield")}/> </div>
                     </div>
                     <div className="col s12 center-align">Textfield</div>
                 </div>
