@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { saveWorkHandler, updateTimeHandler, nameChangeHandler, idGenerator } from '../../store/database/asynchHandler'
+import { saveWorkHandler, updateTimeHandler, nameChangeHandler, idGenerator, getIndex } from '../../store/database/asynchHandler'
 import Controls from './Controls'
 import Wireframe from './Wireframe'
 import Properties from './Properties'
@@ -57,6 +57,26 @@ class EditScreen extends Component {
 
     componentDidMount() {
         if(this.props.wireframe) { this.props.updateTime(this.props.wireframe) }
+        window.addEventListener("keydown", this.keyboard.bind(this));
+    }
+
+    componentWillUnmount = () => { 
+        window.removeEventListener("keydown", this.keyboard.bind(this)); 
+    }
+
+    keyboard = (e) => {
+        e.stopImmediatePropagation()
+        let controlsSet = this.state.controls
+        let selected = this.state.selected
+        let ekey = e.key.toLowerCase()
+        const index = getIndex(controlsSet, selected)
+        if(ekey === "delete" && index !== -1) {
+            controlsSet.splice(index, 1)
+            this.setState({ selected: '', controls: controlsSet, changed: true })
+        }
+        else if (e.ctrlKey && ekey === 'd') {
+            console.log('')
+        }
     }
 
     saveWork = (e) => {
@@ -65,7 +85,7 @@ class EditScreen extends Component {
             this.setState({name: "unknown"})
         }
         this.setState({changed: false})
-        this.props.saveWork(this.props.wireframe, this.state.controls, this.state.name)
+        this.props.saveWork(this.props.wireframe, this.state.controls, (this.state.name === "") ? "unknown" : this.state.name)
     }
     closeWork = (e) => {
         e.stopPropagation()
@@ -81,7 +101,7 @@ class EditScreen extends Component {
     selectControl = (key, e) => {
         e.preventDefault()
         e.stopPropagation()
-        this.setState({ selected: key})
+        this.setState({ selected: key })
     }
     unselect = (e) => {
         e.preventDefault()
@@ -90,25 +110,26 @@ class EditScreen extends Component {
     }
     addControl = (type, e) => {
         e.preventDefault()
-        var controls = this.state.controls
-        var control = NEW_CONTROLS.CONTAINER
+        let controls = this.state.controls
+        let control = {}
         switch(type) {
             case "container":
-                control = NEW_CONTROLS.CONTAINER
+                control = JSON.parse(JSON.stringify(NEW_CONTROLS.CONTAINER))
                 break
             case "label":
-                control = NEW_CONTROLS.LABEL
+                control = JSON.parse(JSON.stringify(NEW_CONTROLS.LABEL))
                 break
             case "button":
-                control = NEW_CONTROLS.BUTTON
+                control = JSON.parse(JSON.stringify(NEW_CONTROLS.BUTTON))
                 break
             default:
-                control = NEW_CONTROLS.TEXTFIELD
+                control = JSON.parse(JSON.stringify(NEW_CONTROLS.TEXTFIELD))
                 break
         }
         control.key = idGenerator()
+        console.log(control.key)
         controls.push(control)
-        this.setState({changed: true, controls: controls})
+        this.setState({changed: true, selected: control.key, controls: controls}) 
     }
     changeControl = (index, e) => {
         const { name } = e.target
@@ -124,6 +145,13 @@ class EditScreen extends Component {
         if(name === 'borderWidth') { tempStyle.borderWidth = value + 'px'; temp[index].style = tempStyle}
         if(name === 'borderRadius') { tempStyle.borderRadius = value + 'px'; temp[index].style = tempStyle}
         this.setState({controls: temp, changed: true})
+    }
+    resize = (w, h, key) => {
+        var controls = JSON.parse(JSON.stringify(this.state.controls))
+        const i = getIndex(controls, key)
+        controls[i].style.width = w
+        controls[i].style.height = h
+        this.setState({ controls: controls, changed: true });
     }
 
     render() {
@@ -146,7 +174,9 @@ class EditScreen extends Component {
                     selectControl={this.selectControl}
                     unselect={this.unselect}
                     nameChange={this.nameChange}
-                    name={this.state.name}/>
+                    name={this.state.name}
+                    resize={this.resize}
+                    selected={this.state.selected}/>
                 <Properties wireframe={wireframe} 
                     controls={this.state.controls} 
                     selected={this.state.selected}

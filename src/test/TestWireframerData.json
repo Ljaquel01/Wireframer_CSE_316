@@ -78,7 +78,7 @@
                     "text": "Display",
                     "style": {
                         "position": "absolute",
-                        "left": "50px",
+                        "left": "250px",
                         "top": "60px",
                         "width": "100px",
                         "height": "40px",
@@ -97,8 +97,8 @@
                     "text": "Field: ",
                     "style": {
                         "position": "absolute",
-                        "left": "80px",
-                        "top": "140px",
+                        "left": "300px",
+                        "top": "180px",
                         "width": "100px",
                         "height": "20px",
                         "fontSize": "25px",
@@ -116,8 +116,8 @@
                     "value": "Input",
                     "style": {
                         "position": "absolute",
-                        "left": "40px",
-                        "top": "5px",
+                        "left": "100px",
+                        "top": "100px",
                         "width": "110px",
                         "height": "40px",
                         "fontSize": "25px",

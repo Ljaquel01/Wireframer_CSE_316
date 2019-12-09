@@ -16,14 +16,21 @@ class Wireframe extends React.Component {
                 </div>
                 <div id="wireframe">
                     {controls && controls.map(control => (
-                        control.type === "container" ? <Container control={control} 
+                        control.type === "container" ? 
+                            <Container control={control} selected={this.props.selected}
+                            key={control.key} selectControl={this.props.selectControl} 
+                            resize={this.props.resize} /> :
+                        control.type === "button" ? 
+                            <Button control={control} selected={this.props.selected} resize={this.props.resize}
                             key={control.key} selectControl={this.props.selectControl} /> :
-                        control.type === "button" ? <Button control={control} 
-                            key={control.key} selectControl={this.props.selectControl} /> :
-                        control.type === "label" ? <Label control={control} 
-                            key={control.key} selectControl={this.props.selectControl} /> :
-                        control.type === "textfield" ? <Textfield control={control} 
-                            key={control.key} selectControl={this.props.selectControl} /> : 
+                        control.type === "label" ? 
+                            <Label control={control} selected={this.props.selected}
+                            key={control.key} selectControl={this.props.selectControl}
+                            resize={this.props.resize} /> :
+                        control.type === "textfield" ? 
+                            <Textfield control={control} selected={this.props.selected}
+                            key={control.key} selectControl={this.props.selectControl}
+                            resize={this.props.resize} /> : 
                         null
                     ))}
                 </div>

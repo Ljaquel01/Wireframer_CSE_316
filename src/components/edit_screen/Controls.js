@@ -19,7 +19,7 @@ class Controls extends Component {
                 </div>
                 <div className="row">
                     <div className="col s12"> 
-                        <div name="container" className="center-align"> <Container addControl={this.props.addControl.bind(this, "container")}/> </div> 
+                        <div name="container" className="center-align"> <Container resize={this.props.resize} addControl={this.props.addControl.bind(this, "container")}/> </div> 
                     </div>
                     <div className="col s12 center-align">Container</div>
                     <div className="col s12"> 

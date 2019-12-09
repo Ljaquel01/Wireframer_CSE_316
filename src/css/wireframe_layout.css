@@ -85,6 +85,13 @@ form button, form h5 {
   padding-left: 5px !important;
 }
 
+.control_center {
+  position: relative;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .divider {
   margin: 10px;
 }
@@ -95,6 +102,35 @@ form button, form h5 {
 
 .containerControl, .labelControl, .buttonControl, .textfieldControl {
   margin-top: 35px;
+}
+
+.resizer {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: white;
+  border-width: 1.5px;
+  border-color: black;
+  border-style: solid;
+  z-index: 2;
+  pointer-events: none
+}
+
+.resizer.nw {
+  top: -2px;
+  left: -2px;
+}
+.resizer.ne {
+  top: -2px;
+  right: -2px
+}
+.resizer.sw {
+  bottom: -2px;
+  left: -2px
+}
+.resizer.se {
+  bottom: -2px;
+  right: -2px
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),

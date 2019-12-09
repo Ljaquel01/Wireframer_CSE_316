@@ -1,7 +1,14 @@
 import * as actionCreators from '../actions/actionCreators.js'
 
 export const idGenerator = () => {
-  return '_' + Math.random().toString(36).substr(2, 9);
+  //return '_' + Math.random().toString(36).substr(2, 9);
+  var numbers = '0123456789';
+  var rtn = '';
+  for (var i = 0; i < 10; i++) {
+    rtn += numbers.charAt(Math.floor(Math.random() * numbers.length));
+  }
+  rtn = parseInt(rtn)
+  return rtn;
 };
 
 export const getIndex = (list, key) => {
