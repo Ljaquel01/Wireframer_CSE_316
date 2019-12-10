@@ -69,7 +69,8 @@
                         "borderColor": "#404040", 
                         "borderWidth": "1px", 
                         "borderRadius": "2px",
-                        "borderStyle": "solid"
+                        "borderStyle": "solid",
+                        "zIndex": "-2"
                     }
                 },
                 {

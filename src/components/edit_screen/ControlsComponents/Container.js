@@ -33,7 +33,7 @@ class Container extends React.Component {
                 left: '0px',
                 color: '#000000',
                 top: '0px',
-                zIndex: "-1"
+                zIndex: "-2"
             }
         }
         var sel = false
@@ -52,9 +52,13 @@ class Container extends React.Component {
                     height: parseInt(this.state.height.substring(0, this.state.height.length)),
                 }}
                 onResize={(e, direction, ref, d, position) => {
+                    console.log(position)
                     this.setState({
                         width: ref.offsetWidth + 'px',
                         height: ref.offsetHeight + 'px',
+                        x: position.x + 'px',
+                        y: position.y + 'px'
+                        
                     }, () => { this.props.resize(this.state.width, this.state.height, this.props.control.key) })
                 }}
                 onDragStop={(e, d) => { this.setState({ x: d.x + 'px', y: d.y + 'py'},

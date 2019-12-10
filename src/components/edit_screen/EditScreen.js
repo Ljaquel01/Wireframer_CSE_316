@@ -14,7 +14,7 @@ export const NEW_CONTROLS = {
         style: {
             position: 'absolute', width: '150px', height: '80px', backgroundColor: 'white',
             borderColor: "#000000", borderRadius: "5px", borderStyle: 'solid', borderWidth: "1px",
-            fontSize: "18px", left: '2px', color: '#000000', top: '2px',
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px' , zIndex: '-2',
         }
     },
     BUTTON: {
@@ -101,12 +101,12 @@ class EditScreen extends Component {
     selectControl = (key, e) => {
         e.preventDefault()
         e.stopPropagation()
-        this.setState({ selected: key })
+        this.setState({selected: key })
     }
     unselect = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        this.setState({ selected: ''})
+        this.setState({ selected: '' })
     }
     addControl = (type, e) => {
         e.preventDefault()
