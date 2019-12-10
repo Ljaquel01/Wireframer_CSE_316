@@ -57,25 +57,34 @@ class EditScreen extends Component {
 
     componentDidMount() {
         if(this.props.wireframe) { this.props.updateTime(this.props.wireframe) }
-        window.addEventListener("keydown", this.keyboard.bind(this));
+        window.addEventListener("keyup", this.keyboard.bind(this));
     }
 
     componentWillUnmount = () => { 
-        window.removeEventListener("keydown", this.keyboard.bind(this)); 
+        window.removeEventListener("keyup", this.keyboard.bind(this)); 
     }
 
     keyboard = (e) => {
-        e.stopImmediatePropagation()
-        let controlsSet = this.state.controls
-        let selected = this.state.selected
-        let ekey = e.key.toLowerCase()
-        const index = getIndex(controlsSet, selected)
-        if(ekey === "delete" && index !== -1) {
-            controlsSet.splice(index, 1)
-            this.setState({ selected: '', controls: controlsSet, changed: true })
-        }
-        else if (e.ctrlKey && ekey === 'd') {
-            console.log('')
+        if(e.key.toLowerCase() === 'd') { e.preventDefault()}
+        e.stopPropagation()
+        var controls = JSON.parse(JSON.stringify(this.state.controls))
+        var selected = this.state.selected
+        var ekey = e.key.toLowerCase()
+        const index = getIndex(controls, selected)
+        if(index !== -1) {
+            if(ekey === "delete") {
+                controls.splice(index, 1)
+                this.setState({ selected: '', controls: controls, changed: true })
+            }
+            else if (e.ctrlKey && ekey === 'd') {
+                e.preventDefault()
+                var control = JSON.parse(JSON.stringify(controls[index]))
+                control.style.left = parseInt(control.style.left.substring(0, control.style.left.length)) + 60 + 'px'
+                control.style.top = parseInt(control.style.top.substring(0, control.style.top.length)) + 60 + 'px'
+                control.key = idGenerator()
+                controls.push(control)
+                this.setState({ selected: control.key, controls: controls, changed: true })
+            }
         }
     }
 
