@@ -146,11 +146,19 @@ class EditScreen extends Component {
         if(name === 'borderRadius') { tempStyle.borderRadius = value + 'px'; temp[index].style = tempStyle}
         this.setState({controls: temp, changed: true})
     }
-    resize = (w, h, key) => {
+    resize = (w, h, key, e) => {
         var controls = JSON.parse(JSON.stringify(this.state.controls))
         const i = getIndex(controls, key)
         controls[i].style.width = w
         controls[i].style.height = h
+        this.setState({ controls: controls, changed: true });
+    }
+    
+    drag = (x, y, key) => {
+        var controls = JSON.parse(JSON.stringify(this.state.controls))
+        const i = getIndex(controls, key)
+        controls[i].style.top = y
+        controls[i].style.left = x
         this.setState({ controls: controls, changed: true });
     }
 
@@ -176,7 +184,8 @@ class EditScreen extends Component {
                     nameChange={this.nameChange}
                     name={this.state.name}
                     resize={this.resize}
-                    selected={this.state.selected}/>
+                    selected={this.state.selected}
+                    drag={this.drag}/>
                 <Properties wireframe={wireframe} 
                     controls={this.state.controls} 
                     selected={this.state.selected}

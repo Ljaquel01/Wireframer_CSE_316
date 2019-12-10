@@ -49,6 +49,8 @@ class Textfield extends React.Component {
                 className="textfield_res" style={style} name='textfield' enable={enable}
                 bounds= 'parent'
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)}       
+                onResizeStart={(e) => {e.stopPropagation()}}
+                onResize={(e) => {e.stopPropagation()}}
                 onResizeStop={(e, direction, ref, d) => {
                     var w = parseInt(this.state.width.substring(0,this.state.width.length)) + d.width + "px"
                     var h = parseInt(this.state.height.substring(0,this.state.height.length)) + d.height + "px"

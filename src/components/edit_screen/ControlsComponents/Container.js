@@ -1,5 +1,5 @@
 import React from 'react';
-import { Resizable } from "re-resizable";
+import { Rnd } from "react-rnd";
 
 const resizers =
     <div>
@@ -12,9 +12,11 @@ const resizers =
 class Container extends React.Component {
     state = {
         width: this.props.control ? this.props.control.style.width : '150px',
-        height: this.props.control ? this.props.control.style.height : '80px'
+        height: this.props.control ? this.props.control.style.height : '80px',
+        x: this.props.control ? this.props.control.style.left : '0px',
+        y: this.props.control ? this.props.control.style.top : '0px',
     }
-
+    
     render() {
         const { control } = this.props;
         var style = control ? control.style : null
@@ -40,20 +42,27 @@ class Container extends React.Component {
         return (
             this.props.control 
             ?
-            <Resizable size={{ width: this.state.width, height: this.state.height }}
-                name="container" className="center" style={style} enable={enable}
-                bounds= 'parent'
-                onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) }       
-                onResizeStop={(e, direction, ref, d) => {
-                    var w = parseInt(this.state.width.substring(0,this.state.width.length)) + d.width + "px"
-                    var h = parseInt(this.state.height.substring(0,this.state.height.length)) + d.height + "px"
+            <Rnd bounds="parent" style={style} disableDragging={!sel} enableResizing={enable}
+                minWidth={30} minHeight={30}
+                position={{ 
+                    x: parseInt(this.state.x.substring(0, this.state.x.length)), 
+                    y: parseInt(this.state.y.substring(0, this.state.y.length))}}
+                size={{ 
+                    width: parseInt(this.state.width.substring(0, this.state.width.length)), 
+                    height: parseInt(this.state.height.substring(0, this.state.height.length)),
+                }}
+                onResize={(e, direction, ref, d, position) => {
                     this.setState({
-                        width: w,
-                        height: h,
-                    }, () => {this.props.resize(w, h, this.props.control.key)})
-                }} >
+                        width: ref.offsetWidth + 'px',
+                        height: ref.offsetHeight + 'px',
+                    }, () => { this.props.resize(this.state.width, this.state.height, this.props.control.key) })
+                }}
+                onDragStop={(e, d) => { this.setState({ x: d.x + 'px', y: d.y + 'py'},
+                    () => {this.props.drag(this.state.x, this.state.y, this.props.control.key)}) }}
+                onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) }       
+                >
                 {sel ? resizers : <div></div>}
-            </Resizable>
+            </Rnd>
             : 
             <div name="container" className="center" style={style}
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) } >

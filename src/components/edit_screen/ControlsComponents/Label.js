@@ -1,6 +1,5 @@
 import React from 'react';
 import { Resizable } from "re-resizable";
-import { blockStatement } from '@babel/types';
 
 const resizers =
     <div>
@@ -39,7 +38,7 @@ class Label extends React.Component {
         const inStyle = {
             fontSize: style.fontSize,
             color: style.color,
-            display: 'inline-block',
+            display: 'inline-block'
         }
         const t = "Prompt for inputs"
         const enable = { top:sel, right:sel, bottom:sel, left:sel, topRight:sel, bottomRight:sel, bottomLeft:sel, topLeft:sel }
@@ -50,6 +49,8 @@ class Label extends React.Component {
                 className="label_res" style={style} name='label' enable={enable}
                 bounds= 'parent'
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)}       
+                onResizeStart={(e) => {e.stopPropagation()}}
+                onResize={(e) => {e.stopPropagation()}}
                 onResizeStop={(e, direction, ref, d) => {
                     var w = parseInt(this.state.width.substring(0,this.state.width.length)) + d.width + "px"
                     var h = parseInt(this.state.height.substring(0,this.state.height.length)) + d.height + "px"

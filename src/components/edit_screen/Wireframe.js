@@ -19,18 +19,19 @@ class Wireframe extends React.Component {
                         control.type === "container" ? 
                             <Container control={control} selected={this.props.selected}
                             key={control.key} selectControl={this.props.selectControl} 
-                            resize={this.props.resize} /> :
+                            resize={this.props.resize} drag={this.props.drag} /> :
                         control.type === "button" ? 
-                            <Button control={control} selected={this.props.selected} resize={this.props.resize}
-                            key={control.key} selectControl={this.props.selectControl} /> :
+                            <Button control={control} selected={this.props.selected} 
+                            key={control.key} selectControl={this.props.selectControl}
+                            drag={this.props.drag} resize={this.props.resize} /> :
                         control.type === "label" ? 
                             <Label control={control} selected={this.props.selected}
                             key={control.key} selectControl={this.props.selectControl}
-                            resize={this.props.resize} /> :
+                            resize={this.props.resize} drag={this.props.drag} /> :
                         control.type === "textfield" ? 
                             <Textfield control={control} selected={this.props.selected}
                             key={control.key} selectControl={this.props.selectControl}
-                            resize={this.props.resize} /> : 
+                            resize={this.props.resize} drag={this.props.drag} /> : 
                         null
                     ))}
                 </div>
