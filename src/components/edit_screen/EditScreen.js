@@ -14,7 +14,7 @@ export const NEW_CONTROLS = {
         style: {
             position: 'absolute', width: '150px', height: '80px', backgroundColor: 'white',
             borderColor: "#000000", borderRadius: "5px", borderStyle: 'solid', borderWidth: "1px",
-            fontSize: "18px", left: '2px', color: '#000000', top: '2px' , zIndex: '-2',
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px'
         }
     },
     BUTTON: {
@@ -28,11 +28,11 @@ export const NEW_CONTROLS = {
     },
     TEXTFIELD: {
         type: "textfield",
-        text: "textfield",
+        value: "textfield",
         style: {
-            position: "abosulte", width: '100px', height: '40px', backgroundColor: '#FFFFFF',
+            position: 'abosulte', width: '100px', height: '40px', backgroundColor: '#FFFFFF',
             borderRadius: "6px", borderStyle: 'solid', borderWidth: "1px",
-            fontSize: "18px", left: '2px', color: '#000000', top: '2px',
+            fontSize: "18px", left: '2px', color: '#000000', top: '2px', cursor: 'default'
         }
     },
     LABEL: {
@@ -52,7 +52,9 @@ class EditScreen extends Component {
         controls: this.props.wireframe ? this.props.wireframe.controls : [],
         selected: '',
         zoom: 1,
-        changed: false
+        changed: false,
+        width: this.props.wireframe ? this.props.wireframe.width : '600px',
+        height: this.props.wireframe ? this.props.wireframe.height : '400px',
     }
 
     componentDidMount() {
@@ -65,11 +67,12 @@ class EditScreen extends Component {
     }
 
     keyboard = (e) => {
-        if(e.key.toLowerCase() === 'd') { e.preventDefault()}
+        if(!this.state) { if(this.state.selected === '') { return } return }
         e.stopPropagation()
+        e.preventDefault()
+        var ekey = e.key.toLowerCase()
         var controls = JSON.parse(JSON.stringify(this.state.controls))
         var selected = this.state.selected
-        var ekey = e.key.toLowerCase()
         const index = getIndex(controls, selected)
         if(index !== -1) {
             if(ekey === "delete") {
@@ -90,11 +93,13 @@ class EditScreen extends Component {
 
     saveWork = (e) => {
         e.stopPropagation()
-        if(this.state.name === "") {
-            this.setState({name: "unknown"})
-        }
+        if(this.state.name === "") { this.setState({name: "unknown"}) }
         this.setState({changed: false})
-        this.props.saveWork(this.props.wireframe, this.state.controls, (this.state.name === "") ? "unknown" : this.state.name)
+        this.props.saveWork(
+            this.props.wireframe, this.state.controls, 
+            (this.state.name === "") ? "unknown" : this.state.name,
+            this.state.width, this.state.height
+        )
     }
     closeWork = (e) => {
         e.stopPropagation()
@@ -162,13 +167,15 @@ class EditScreen extends Component {
         controls[i].style.height = h
         this.setState({ controls: controls, changed: true });
     }
-    
     drag = (x, y, key) => {
         var controls = JSON.parse(JSON.stringify(this.state.controls))
         const i = getIndex(controls, key)
         controls[i].style.top = y
         controls[i].style.left = x
         this.setState({ controls: controls, changed: true });
+    }
+    resizeWireframe = (w, h, e) => {
+        this.setState({ width: w, height: h, changed: true })
     }
 
     render() {
@@ -187,12 +194,14 @@ class EditScreen extends Component {
                     addControl={this.addControl}
                     any={this.state.changed}
                 />
-                <Wireframe controls={this.state.controls} 
+                <Wireframe wireframe={wireframe}
+                    controls={this.state.controls} 
                     selectControl={this.selectControl}
                     unselect={this.unselect}
                     nameChange={this.nameChange}
                     name={this.state.name}
                     resize={this.resize}
+                    resizeWireframe={this.resizeWireframe}
                     selected={this.state.selected}
                     drag={this.drag}/>
                 <Properties wireframe={wireframe} 
@@ -222,7 +231,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    saveWork: (wireframe, controls, name) => dispatch(saveWorkHandler(wireframe, controls, name)),
+    saveWork: (wireframe, controls, name, width, height) => dispatch(saveWorkHandler(wireframe, controls, name, width, height)),
     updateTime: (wireframe) => dispatch(updateTimeHandler(wireframe)),  
     nameChange: (wireframe, name) => dispatch(nameChangeHandler(wireframe, name))
 });

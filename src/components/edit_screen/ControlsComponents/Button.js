@@ -33,7 +33,8 @@ class Button extends React.Component {
                 fontSize: "15px",
                 left: '0px',
                 color: '#000000',
-                top: '0px'
+                top: '0px',
+                cursor: 'pointer'
             }
         }
         const inStyle = {
@@ -41,12 +42,14 @@ class Button extends React.Component {
             color: style.color,
             borderWidth: '0px', 
             backgroundColor: 'rgba(52, 52, 52, 0)',
+            cursor: 'default'
         }
+        if(sel) {style.cursor = 'move'; inStyle.cursor = 'move'}
         return (
             this.props.control 
             ?
             <Resizable size={{ width: this.state.width, height: this.state.height }}
-                className="button_res" style={style} name='button' enable={enable}
+                className="button_res hoverable" style={style} name='button' enable={enable}
                 bounds= 'parent'
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)}       
                 onResizeStart={(e) => {e.stopPropagation()}}

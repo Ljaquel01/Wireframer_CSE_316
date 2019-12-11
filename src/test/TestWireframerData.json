@@ -5,6 +5,8 @@
             "name": "Social App",
             "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
+            "width": "600px",
+            "height": "400px",
             "controls": [
                 {
                     "key": 0,
@@ -22,8 +24,7 @@
                         "borderColor": "#000000",
                         "borderWidth": "0px",
                         "borderRadius": "5px",
-                        "borderStyle": "solid",
-                        "zIndex": "-1"
+                        "borderStyle": "solid"
                     }
                 },
                 {
@@ -52,6 +53,8 @@
             "name": "Form App",
             "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
+            "width": "600px",
+            "height": "400px",
             "controls": [
                 {
                     "key": 0,
@@ -68,8 +71,7 @@
                         "borderColor": "#404040", 
                         "borderWidth": "1px", 
                         "borderRadius": "2px",
-                        "borderStyle": "solid",
-                        "zIndex": "-2"
+                        "borderStyle": "solid"
                     }
                 },
                 {
@@ -136,6 +138,8 @@
             "name": "Library Layout",
             "user": "DB3vb9GlEROaEWUtKMJ9dUYqm9a2",
             "lastModified": "",
+            "width": "600px",
+            "height": "400px",
             "controls": [
                 {
                     "key": 0,

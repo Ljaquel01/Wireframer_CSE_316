@@ -68,3 +68,7 @@ div.banner {
   color: #00e676;
   cursor: pointer;
 }
+
+.c_label {
+  cursor: default;
+}

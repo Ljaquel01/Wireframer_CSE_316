@@ -63,10 +63,11 @@ export const createWireframeHandler = (wireframe) => (dispatch, getState, { getF
   })
 };
 
-export const saveWorkHandler = (wireframe, controls, name) => (dispatch, getState, { getFirestore }) => {
+export const saveWorkHandler = (wireframe, controls, name, width, height) => (dispatch, getState, { getFirestore }) => {
   if(name === '') { name = "unknown"}
   const firestore = getFirestore();
-  firestore.collection('wireframes').doc(wireframe.id).update({controls: controls, name: name})
+  firestore.collection('wireframes').doc(wireframe.id)
+  .update({controls: controls, name: name, width:width, height: height})
   .then(() => {
     dispatch(actionCreators.saveWork(controls))
   })

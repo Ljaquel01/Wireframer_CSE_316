@@ -21,19 +21,19 @@ class Controls extends Component {
                     <div className="col s12"> 
                         <div name="container" className="center-align"> <Container resize={this.props.resize} addControl={this.props.addControl.bind(this, "container")}/> </div> 
                     </div>
-                    <div className="col s12 center-align">Container</div>
+                    <div className="col s12 center-align c_label">Container</div>
                     <div className="col s12"> 
                         <div name="label" className="center-align labelControl"> <Label addControl={this.props.addControl.bind(this, "label")}/> </div>
                     </div>
-                    <div className="col s12 center-align">Label</div>
+                    <div className="col s12 center-align c_label">Label</div>
                     <div className="col s12"> 
                         <div className="center-align buttonControl"> <Button addControl={this.props.addControl.bind(this, "button")}/> </div>
                     </div>
-                    <div className="col s12 center-align">Button</div>
+                    <div className="col s12 center-align c_label">Button</div>
                     <div className="col s12"> 
                         <div className="center-align textfieldControl"> <Textfield addControl={this.props.addControl.bind(this, "textfield")}/> </div>
                     </div>
-                    <div className="col s12 center-align">Textfield</div>
+                    <div className="col s12 center-align c_label">Textfield</div>
                 </div>
             </div>
         );

@@ -33,7 +33,7 @@ class Container extends React.Component {
                 left: '0px',
                 color: '#000000',
                 top: '0px',
-                zIndex: "-2"
+                cursor: 'pointer',
             }
         }
         var sel = false
@@ -43,7 +43,7 @@ class Container extends React.Component {
             this.props.control 
             ?
             <Rnd bounds="parent" style={style} disableDragging={!sel} enableResizing={enable}
-                minWidth={30} minHeight={30}
+                minWidth={30} minHeight={30} className='hoverable'
                 position={{ 
                     x: parseInt(this.state.x.substring(0, this.state.x.length)), 
                     y: parseInt(this.state.y.substring(0, this.state.y.length))}}
@@ -52,16 +52,12 @@ class Container extends React.Component {
                     height: parseInt(this.state.height.substring(0, this.state.height.length)),
                 }}
                 onResize={(e, direction, ref, d, position) => {
-                    console.log(position)
                     this.setState({
-                        width: ref.offsetWidth + 'px',
-                        height: ref.offsetHeight + 'px',
-                        x: position.x + 'px',
-                        y: position.y + 'px'
-                        
+                        width: ref.offsetWidth + 'px', height: ref.offsetHeight + 'px',
+                        x: position.x + 'px', y: position.y + 'px',
                     }, () => { this.props.resize(this.state.width, this.state.height, this.props.control.key) })
                 }}
-                onDragStop={(e, d) => { this.setState({ x: d.x + 'px', y: d.y + 'py'},
+                onDragStop={(e, d) => { console.log(d.x + " " + d.y);this.setState({ x: d.x + 'px', y: d.y + 'py'},
                     () => {this.props.drag(this.state.x, this.state.y, this.props.control.key)}) }}
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) }       
                 >

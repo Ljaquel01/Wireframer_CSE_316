@@ -33,20 +33,22 @@ class Label extends React.Component {
                 left: '0px',
                 color: '#000000',
                 top: '0px',
+                cursor: 'pointer'
             }
         }
         const inStyle = {
             fontSize: style.fontSize,
             color: style.color,
-            display: 'inline-block'
+            display: 'inline-block',
         }
+        if(sel) {style.cursor = 'move'; inStyle.cursor = 'move'}
         const t = "Prompt for inputs"
         const enable = { top:sel, right:sel, bottom:sel, left:sel, topRight:sel, bottomRight:sel, bottomLeft:sel, topLeft:sel }
         return (
             this.props.control 
             ?
             <Resizable size={{ width: this.state.width, height: this.state.height }}
-                className="label_res" style={style} name='label' enable={enable}
+                className="label_res hoverable" style={style} name='label' enable={enable}
                 bounds= 'parent'
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)}       
                 onResizeStart={(e) => {e.stopPropagation()}}

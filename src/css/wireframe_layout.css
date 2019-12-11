@@ -32,9 +32,8 @@ form button, form h5 {
 }
 
 #wireframe {
+  max-width: 100%;
   position: absolute;
-  width: 600px;
-  height: 400px;
   background-color: #FFFFFF;
   border-color: #000000;
   border-radius: 4px;
