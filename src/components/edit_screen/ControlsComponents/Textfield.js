@@ -80,7 +80,7 @@ class Textfield extends React.Component {
             </Rnd>
             : 
             <div>
-                <input type="text" className="textfield hoverable"
+                <input type="text" className="textfield hoverable title_"
                     onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
                     value={!control ? "Textfield" : control.value} style={style} name='textfield' readOnly>
                 </input>

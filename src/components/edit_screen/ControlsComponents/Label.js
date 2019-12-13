@@ -35,7 +35,7 @@ class Label extends React.Component {
                 borderRadius: "0px",
                 borderStyle: 'solid',
                 borderWidth: "0px",
-                fontSize: "12px",
+                fontSize: "14px",
                 left: '0px',
                 color: '#000000',
                 top: '0px',
@@ -81,7 +81,7 @@ class Label extends React.Component {
             </Rnd>
             : 
             <div className="valign-wrapper center-align">
-                <label className="label center-align hoverable z-depth-1" onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
+                <label className="label center-align hoverable z-depth-1 title_" onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
                     style={style} name='label'>
                     {control ? control.text ? control.text : t : t}
                 </label>

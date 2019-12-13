@@ -11,15 +11,12 @@ body {
 }
 
 body {
-  position: relative;
+  position: absolute;
   overflow: auto;
   width: 92%;
   left: 4%;
-  top: 20px;
-}
-
-.App {
-  overflow: auto;
+  top: 8px;
+  bottom: 0px;
 }
 
 div.banner {
@@ -37,8 +34,6 @@ form button, form h5 {
 }
 #wireframe_wrapper {
   overflow: auto;
-  height: 494px;
-  border-bottom: #424242 1px solid ;
 }
 #wireframe {
   background-color: #FFFFFF;
@@ -50,21 +45,15 @@ form button, form h5 {
   color: #000000;
   top: 6px;
   z-index: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 #controls {
   overflow: auto;
-  height: 494px;
-  border-left: #424242 1px solid ;
-  border-bottom: #424242 1px solid ;
 }
 
 #properties {
   overflow: auto;
-  height: 494px;
-  border-bottom: #424242 1px solid ;
-  border-right: #424242 1px solid ;
 }
 
 #wireframe-link {
@@ -82,8 +71,24 @@ form button, form h5 {
 }
 
 #edit_screen {
-  position: relative;
+  overflow: auto;
+  position: absolute;
+  top: 65px;
   bottom: 0px;
+  border-bottom: #424242 1px solid ;
+  border-right: #424242 1px solid ;
+  border-left: #424242 1px solid ;
+}
+#title {
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+.title_ {
+  font-weight: 600;
+  color: #424242;
+} 
+.title_one {
+  margin: 0px;
 }
 
 .center {
@@ -126,7 +131,7 @@ form button, form h5 {
 }
 
 .containerControl, .labelControl, .buttonControl, .textfieldControl {
-  margin-top: 35px;
+  margin-top: 40px;
 }
 
 .resizer {

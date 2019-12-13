@@ -70,7 +70,7 @@ class Container extends React.Component {
                 {sel ? resizers : null}
             </Rnd>
             : 
-            <div name="container" className="center center-align hoverable" style={style}
+            <div name="container" className="center center-align hoverable title_" style={style}
                 onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key) } >
                     Container
             </div>

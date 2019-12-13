@@ -34,16 +34,16 @@ class Wireframe extends React.Component {
         }
 
         return (
-            <div className="col s7" id='wireframe_wrapper' onClick={this.props.unselect}>
+            <div className="col s8" id='wireframe_wrapper' onClick={this.props.unselect}>
                 <div className="row" style={{margin: '0'}}>
-                    <div className="col s1 prompt">Name:</div>
+                    <div className="col s1 prompt title_">Name:</div>
                     <input type="text" value={this.props.name} 
                         className="col s4 dimension" onChange={this.props.nameChange}></input>
-                    <div className="col s1 prompt">Width:</div>
+                    <div className="col s1 prompt title_">W:</div>
                     <input type="number"  name="w"
                         value={parseInt(this.state.w.substring(0, this.state.w.length-2))}
                         className="col s1 dimension" onChange={this.sizeChange}></input>
-                    <div className="col s1 prompt">Height:</div>
+                    <div className="col s1 prompt title_">H:</div>
                     <input type="number" name = "h"
                         value={parseInt(this.state.h.substring(0, this.state.h.length-2))} 
                         className="col s1 dimension" onChange={this.sizeChange}></input>

@@ -79,14 +79,16 @@ class EditScreen extends Component {
                 controls.splice(index, 1)
                 this.setState({ selected: '', controls: controls, changed: true })
             }
-            else if (e.ctrlKey && ekey === 'd') {
-                e.preventDefault()
-                var control = JSON.parse(JSON.stringify(controls[index]))
-                control.style.left = parseInt(control.style.left.substring(0, control.style.left.length-2)) + 60 + 'px'
-                control.style.top = parseInt(control.style.top.substring(0, control.style.top.length-2)) + 60 + 'px'
-                control.key = idGenerator()
-                controls.push(control)
-                this.setState({ selected: control.key, controls: controls, changed: true })
+            else if (e.ctrlKey) {
+                if(ekey === 'd' || ekey === 'm') {
+                    e.preventDefault()
+                    var control = JSON.parse(JSON.stringify(controls[index]))
+                    control.style.left = parseInt(control.style.left.substring(0, control.style.left.length-2)) + 60 + 'px'
+                    control.style.top = parseInt(control.style.top.substring(0, control.style.top.length-2)) + 60 + 'px'
+                    control.key = idGenerator()
+                    controls.push(control)
+                    this.setState({ selected: control.key, controls: controls, changed: true })
+                }
             }
         }
     }
@@ -202,7 +204,7 @@ class EditScreen extends Component {
         }
 
         return (
-            <div id="edit_screen" className="white row">
+            <div id="edit_screen" className="grey lighten-3 row">
                 <Controls
                     saveWork={this.saveWork}
                     closeWork={this.closeWork}

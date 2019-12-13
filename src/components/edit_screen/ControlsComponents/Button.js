@@ -36,7 +36,7 @@ class Button extends React.Component {
                 borderRadius: "15px",
                 borderStyle: 'solid',
                 borderWidth: "1px",
-                fontSize: "15px",
+                fontSize: "13px",
                 left: '0px',
                 color: '#000000',
                 top: '0px',
@@ -82,7 +82,7 @@ class Button extends React.Component {
             : 
             <div>
                 <button onClick={this.props.addControl ? this.props.addControl : this.props.selectControl.bind(this, control.key)} 
-                    style={style} className="button hoverable" name='button'>{!control ? "Button" : control.text}
+                    style={style} className="button hoverable title_" name='button'>{!control ? "Button" : control.text}
                 </button>
             </div>
         );

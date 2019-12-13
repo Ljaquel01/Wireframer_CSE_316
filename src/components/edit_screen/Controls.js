@@ -11,7 +11,7 @@ class Controls extends Component {
         if (!this.props.any) { saveButtonStyle += " disabled" }
         return (
             <div id="controls" className="grey lighten-3 col s2">
-                <div className="row z-depth-1">
+                <div className="row z-depth-1 title_one">
                     <div className="col s1 controlTools" name='in' onClick={this.props.zoomIn}>
                         <i name='in' className="material-icons">zoom_in</i>
                     </div>
@@ -24,6 +24,9 @@ class Controls extends Component {
                     <h6 className="col s1 offset-s1 btn-flat controlTools" onClick={this.props.closeWork}>
                         <i name='close' className="material-icons">close</i>
                     </h6>
+                </div>
+                <div className="row center-align" id="title">
+                    <h6 className="col s12 title_">Click Element to Add</h6>
                 </div>
                 <div className="row">
                     <div className="col s12"> 

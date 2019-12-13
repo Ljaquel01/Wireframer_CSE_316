@@ -12,8 +12,8 @@ class Properties extends React.Component {
     render() {
         const { selected, controls } = this.props
         if(selected === '') { 
-            return ( <div id="properties" className="grey lighten-3 col s3">
-                        <h6>Properties</h6>
+            return ( <div id="properties" className="grey lighten-3 col s2 title_">
+                        <div>Properties</div>
                         <div className="divider black"></div>
                     </div> ) 
         }
@@ -22,7 +22,7 @@ class Properties extends React.Component {
         const control = controls.filter((control) => {return control.key === selected})[0]
         const index = getIndex(back, selected)
         return (
-            <div id="properties" className="grey lighten-3 col s3">
+            <div id="properties" className="grey lighten-3 col s2 title_">
                 <h6>Properties</h6>
                 <div className="divider black"></div>
                 {control.type === 'container' ? <div></div> : 
