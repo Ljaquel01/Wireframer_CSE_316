@@ -11,10 +11,15 @@ body {
 }
 
 body {
-  position: absolute;
-  width: 88%;
-  left: 6%;
-  top: 5%;
+  position: relative;
+  overflow: auto;
+  width: 92%;
+  left: 4%;
+  top: 20px;
+}
+
+.App {
+  overflow: auto;
 }
 
 div.banner {
@@ -30,24 +35,36 @@ form {
 form button, form h5 {
   margin: 20px 0;
 }
-
+#wireframe_wrapper {
+  overflow: auto;
+  height: 494px;
+  border-bottom: #424242 1px solid ;
+}
 #wireframe {
-  max-width: 100%;
-  position: absolute;
   background-color: #FFFFFF;
   border-color: #000000;
-  border-radius: 4px;
+  border-radius: 0px;
   border-style: solid;
   border-width: 1px;
-  left: auto;
+  left: 2px;
   color: #000000;
-  top: auto;
+  top: 6px;
   z-index: 0;
-  margin: 0px;
+  margin-bottom: 10px;
 }
 
 #controls {
+  overflow: auto;
   height: 494px;
+  border-left: #424242 1px solid ;
+  border-bottom: #424242 1px solid ;
+}
+
+#properties {
+  overflow: auto;
+  height: 494px;
+  border-bottom: #424242 1px solid ;
+  border-right: #424242 1px solid ;
 }
 
 #wireframe-link {
@@ -65,26 +82,35 @@ form button, form h5 {
 }
 
 #edit_screen {
-  bottom: 1px;
-}
-
-#properties {
-  height: 494px
+  position: relative;
+  bottom: 0px;
 }
 
 .center {
   display: inline-block
 }
 
-.row .prop {
+.row .props {
   height: 30px;
+  padding: 2px;
+  margin-top: 18px;
+}
+
+.dimension {
+  padding: 2px;
 }
 
 .textfield {
   padding-left: 5px !important;
 }
-
-.control_center {
+.button_w, .textfield_w, .label_w{
+  pointer-events: none;
+}
+.prompt {
+  height: 45px;
+  line-height: 45px;
+}
+.controlllll_center {
   position: relative;
   top: 44%;
   left: 50%;

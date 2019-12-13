@@ -27,21 +27,21 @@ class Properties extends React.Component {
                 <div className="divider black"></div>
                 {control.type === 'container' ? <div></div> : 
                     <div>
-                        <div className="row valign-wrapper">
+                        <div className="row valign-wrapper props">
                             <label className="col s4 black-text">Text: </label>
                             <input className="col s8" name="text" type="text" 
                                 value={control.text ? control.text : control.value} 
                                 onChange={this.props.change.bind(this, index)}>
                             </input>
                         </div>
-                        <div className="row valign-wrapper">
+                        <div className="row valign-wrapper props">
                             <label className="col s4 black-text">Color: </label>
                             <input className="col s4 offset-s4" name="color" type="color" 
                                 value={control.style.color} 
                                 onChange={this.props.change.bind(this, index)}>
                             </input>
-                        </div>
-                        <div className="row valign-wrapper">
+                        </div> 
+                        <div className="row valign-wrapper props">
                             <label className="col s4 black-text">Font Size: </label>
                             <input className="col s4 offset-s4" name="fontSize" type="number" 
                                 value={control.style.fontSize ? control.style.fontSize.substring(0, control.style.fontSize.length-2) : '10px'} 
@@ -49,28 +49,28 @@ class Properties extends React.Component {
                             </input>
                         </div>
                     </div>}
-                <div className="row valign-wrapper">
+                <div className="row valign-wrapper props">
                     <label className="col s4 black-text">Background: </label>
                     <input className="col s4 offset-s4" name="backgroundColor" type="color" 
                         value={ control.style.backgroundColor ? control.style.backgroundColor : '#FFFFFF' } 
                         onChange={this.props.change.bind(this, index)}>
                     </input>
                 </div>
-                <div className="row valign-wrapper prop">
+                <div className="row valign-wrapper props">
                     <label className="col s4 black-text">Border Color: </label>
                     <input className="col s4 offset-s4" name="borderColor" type="color" 
                         value={control.style.borderColor} 
                         onChange={this.props.change.bind(this, index)}>
                     </input>
                 </div>
-                <div className="row valign-wrapper">
+                <div className="row valign-wrapper props">
                     <label className="col s4 black-text">Border Width: </label>
                     <input className="col s4 offset-s4" name="borderWidth" type="number" min="0" max="250" step="1" 
                         value={control.style.borderWidth ? control.style.borderWidth.substring(0, control.style.borderWidth.length-2) : '0px'} 
                         onChange={this.props.change.bind(this, index)}>
                     </input>
                 </div>
-                <div className="row valign-wrapper">
+                <div className="row valign-wrapper props">
                     <label className="col s4 black-text">Border Radius: </label>
                     <input className="col s4 offset-s4" name="borderRadius" type="number" min="0" max="250" step="1" 
                         value={control.style.borderRadius ? control.style.borderRadius.substring(0, control.style.borderRadius.length-2) : '0px'} 

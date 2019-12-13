@@ -39,7 +39,7 @@ export const NEW_CONTROLS = {
         type: "label",
         text: "label",
         style: {
-            position: "absolute", width: '80px', height: '50px', backgroundColor: '#FFFFFF', 
+            position: "absolute", width: '80px', height: '50px', backgroundColor: 'rgba(52, 52, 52, 0)', 
             borderColor: "#000000", borderRadius: "6px", borderStyle: 'solid', borderWidth: "0px", 
             fontSize: "18px", left: '2px', color: '#000000', top: '2px',
         }
@@ -82,8 +82,8 @@ class EditScreen extends Component {
             else if (e.ctrlKey && ekey === 'd') {
                 e.preventDefault()
                 var control = JSON.parse(JSON.stringify(controls[index]))
-                control.style.left = parseInt(control.style.left.substring(0, control.style.left.length)) + 60 + 'px'
-                control.style.top = parseInt(control.style.top.substring(0, control.style.top.length)) + 60 + 'px'
+                control.style.left = parseInt(control.style.left.substring(0, control.style.left.length-2)) + 60 + 'px'
+                control.style.top = parseInt(control.style.top.substring(0, control.style.top.length-2)) + 60 + 'px'
                 control.key = idGenerator()
                 controls.push(control)
                 this.setState({ selected: control.key, controls: controls, changed: true })
@@ -109,9 +109,8 @@ class EditScreen extends Component {
         var name = e.target.value
         this.setState({changed: true, name: name})
     }
-    zoom = (e) => {
-
-    }
+    zoomIn = (e) => { this.setState({zoom: 2*this.state.zoom}) }
+    zoomOut = (e) => { this.setState({zoom: 0.5*this.state.zoom}) }
     selectControl = (key, e) => {
         e.preventDefault()
         e.stopPropagation()
@@ -168,14 +167,31 @@ class EditScreen extends Component {
         this.setState({ controls: controls, changed: true });
     }
     drag = (x, y, key) => {
-        var controls = JSON.parse(JSON.stringify(this.state.controls))
+        var controls = this.state.controls
         const i = getIndex(controls, key)
         controls[i].style.top = y
         controls[i].style.left = x
         this.setState({ controls: controls, changed: true });
     }
-    resizeWireframe = (w, h, e) => {
-        this.setState({ width: w, height: h, changed: true })
+    resizeWireframe = (width, height, e) => {
+        this.setState({ width: width, height: height, changed: true})
+        var controls = this.state.controls
+        controls = controls.map( (control) => {  
+            var w =  parseInt(control.style.width.substring(0, control.style.width.length-2))
+            var h =  parseInt(control.style.height.substring(0, control.style.height.length-2))
+            var x =  parseInt(control.style.left.substring(0, control.style.left.length-2))
+            var y =  parseInt(control.style.top.substring(0, control.style.top.length-2))
+            var width_int = parseInt(width.substring(0, width.length-2))
+            var height_int = parseInt(height.substring(0, height.length-2))
+            if(w + x >  width_int) {
+                control.style.left = width_int - w + 'px'
+            }
+            if(h + y >  height_int) {
+                control.style.top = height_int - h + 'px'
+            }
+            return control
+        })
+        this.setState({ controls: controls })
     }
 
     render() {
@@ -190,7 +206,8 @@ class EditScreen extends Component {
                 <Controls
                     saveWork={this.saveWork}
                     closeWork={this.closeWork}
-                    zoom={this.zoom}
+                    zoomIn={this.zoomIn}
+                    zoomOut={this.zoomOut}
                     addControl={this.addControl}
                     any={this.state.changed}
                 />
@@ -203,7 +220,8 @@ class EditScreen extends Component {
                     resize={this.resize}
                     resizeWireframe={this.resizeWireframe}
                     selected={this.state.selected}
-                    drag={this.drag}/>
+                    drag={this.drag}
+                    zoom={this.state.zoom}/>
                 <Properties wireframe={wireframe} 
                     controls={this.state.controls} 
                     selected={this.state.selected}

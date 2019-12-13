@@ -12,28 +12,30 @@ class Controls extends Component {
         return (
             <div id="controls" className="grey lighten-3 col s2">
                 <div className="row z-depth-1">
-                    <div className="col s1 controlTools" name="in" onClick={this.props.zoom}><i className="material-icons">zoom_in</i></div>
-                    <div className="col s1 offset-s1 controlTools" name="out" onClick={this.props.zoom}><i className="material-icons">zoom_out</i></div>
-                    <h6 className={saveButtonStyle} onClick={this.props.saveWork}>Save</h6>
-                    <h6 className="col s1 offset-s1 btn-flat controlTools" onClick={this.props.closeWork}>Close</h6>
+                    <div className="col s1 controlTools" name='in' onClick={this.props.zoomIn}>
+                        <i name='in' className="material-icons">zoom_in</i>
+                    </div>
+                    <div className="col s1 offset-s1 controlTools" name="out" onClick={this.props.zoomOut}>
+                        <i name='out' className="material-icons">zoom_out</i>
+                    </div>
+                    <h6 className={saveButtonStyle} onClick={this.props.saveWork}>
+                        <i name='save' className="material-icons">save</i>
+                    </h6>
+                    <h6 className="col s1 offset-s1 btn-flat controlTools" onClick={this.props.closeWork}>
+                        <i name='close' className="material-icons">close</i>
+                    </h6>
                 </div>
                 <div className="row">
                     <div className="col s12"> 
                         <div name="container" className="center-align"> <Container resize={this.props.resize} addControl={this.props.addControl.bind(this, "container")}/> </div> 
                     </div>
-                    <div className="col s12 center-align c_label">Container</div>
-                    <div className="col s12"> 
+                    <div className="col s4 offset-s4"> 
                         <div name="label" className="center-align labelControl"> <Label addControl={this.props.addControl.bind(this, "label")}/> </div>
                     </div>
-                    <div className="col s12 center-align c_label">Label</div>
-                    <div className="col s12"> 
-                        <div className="center-align buttonControl"> <Button addControl={this.props.addControl.bind(this, "button")}/> </div>
-                    </div>
-                    <div className="col s12 center-align c_label">Button</div>
+                    <div className="col s12 center-align buttonControl"> <Button addControl={this.props.addControl.bind(this, "button")}/> </div>
                     <div className="col s12"> 
                         <div className="center-align textfieldControl"> <Textfield addControl={this.props.addControl.bind(this, "textfield")}/> </div>
                     </div>
-                    <div className="col s12 center-align c_label">Textfield</div>
                 </div>
             </div>
         );
